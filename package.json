@@ -1,0 +1,19 @@
+{
+  "name": "email-templates",
+  "version": "1.0.0",
+  "description": "Email templates and hash merger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donatien513/Email-Templates.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/donatien513/Email-Templates/issues"
+  },
+  "homepage": "https://github.com/donatien513/Email-Templates#readme"
+}
