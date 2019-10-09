@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/donatien513/Email-Templates/issues"
   },
-  "homepage": "https://github.com/donatien513/Email-Templates#readme"
+  "homepage": "https://github.com/donatien513/Email-Templates#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
