@@ -17,11 +17,14 @@
   },
   "homepage": "https://github.com/donatien513/Email-Templates#readme",
   "dependencies": {
+    "celebrate": "^10.0.1",
     "cheerio": "^1.0.0-rc.3",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "html-escaper": "^2.0.0",
     "html-minifier": "^4.0.0",
-    "juice": "^5.2.0"
+    "juice": "^5.2.0",
+    "mustache": "^3.1.0",
+    "tachyons": "^4.11.1"
   }
 }

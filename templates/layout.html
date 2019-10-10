@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body class="sans-serif bg-light-gray f6">
+    <table class="w-100 collapse">
+      <tr>
+        <td class="pa3">
+          <table class="collapse center container-length">
+            <tr>
+              <td class="pa0">
+                <table class="w-100 collapse bg-white br2 ba b--moon-gray">
+                  <tr>
+                    <td class="pa3 pb1 tc">
+                      <img src="{{organization.image_url}}" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="pa3">
+                      <div class="bb b--light-gray"></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="pa3">
+                      <div>
+                      {{content}}
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <div class="">
+                <table class="w-100 collapse center">
+                  <tr>
+                    <td class="pa3 tc gray">
+                      Email envoyé par <a class="link blue" href="{{organization.site}}">{{organization.name}}</a>.
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <style>
+      {{css}}
+      .container-length {
+        width: 464px;
+      }
+    </style>
+  </body>
+</html>
