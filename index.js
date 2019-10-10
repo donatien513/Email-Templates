@@ -1,23 +1,23 @@
-"use strict";
+"use strict"
 
 const requireStaticAssets = (module, filePath) => {
   module.exports = readFileSync(filePath, "utf8")
-};
+}
 
 require.extensions[".css"] = requireStaticAssets
 require.extensions[".html"] = requireStaticAssets
 
 // Modules declarations
+const ejs = require("ejs")
+const path = require("path")
+const juice = require("juice")
+const cheerio = require("cheerio")
 const express = require("express")
-const ejs = require("ejs");
-const path = require("path");
-const juice = require("juice");
-const cheerio = require("cheerio");
-const mustache = require("mustache");
-const { readFileSync } = require("fs");
-const { minify } = require("html-minifier");
-const { unescape } = require("html-escaper");
-const { celebrate, Joi, errors } = require("celebrate");
+const mustache = require("mustache")
+const { readFileSync } = require("fs")
+const { minify } = require("html-minifier")
+const { unescape } = require("html-escaper")
+const { celebrate, Joi, errors } = require("celebrate")
 
 const loadRawTemplate = (filename) => {
   let resolvedFilepath = path.resolve(process.cwd(), "templates", filename)
@@ -25,8 +25,8 @@ const loadRawTemplate = (filename) => {
 }
 
 const app = express()
-const tachyons = require("tachyons/css/tachyons.css");
-const layout = loadRawTemplate("layout.html");
+const tachyons = require("tachyons/css/tachyons.css")
+const layout = loadRawTemplate("layout.html")
 
 const loadRenderer = (templateFilename) => {
   let template = loadRawTemplate(templateFilename)
@@ -36,16 +36,16 @@ const loadRenderer = (templateFilename) => {
   })
   let withCSS = mustache.render(withinLayout, {  })
   let inlinedCSS = juice(withCSS)
-  const $ = cheerio.load(inlinedCSS);
+  const $ = cheerio.load(inlinedCSS)
   $("style").remove()
-  $("*").removeAttr("class");
-  let unescaped = unescape($.html());
+  $("*").removeAttr("class")
+  let unescaped = unescape($.html())
   let minified = minify(unescaped, {
     collapseWhitespace: true,
     conservativeCollapse: true,
     minifyCSS: true,
     removeComments: true,
-  });
+  })
   let ejsFunc = ejs.compile(minified)
   return ejsFunc
 }
@@ -62,7 +62,7 @@ routes.forEach(route => {
   app.get(route.path,
     celebrate(route.validationRule),
     (req, res, next) => {
-      let rendered = route.renderer(req.body);
+      let rendered = route.renderer(req.body)
       res.send(rendered)
       next()
     }
@@ -70,7 +70,7 @@ routes.forEach(route => {
   app.post(route.path,
     celebrate(route.validationRule),
     (req, res, next) => {
-      let rendered = route.renderer(req.body);
+      let rendered = route.renderer(req.body)
       res.send(rendered)
       next()
     }
@@ -79,4 +79,4 @@ routes.forEach(route => {
 
 app.use(errors())
 
-module.exports = app;
+module.exports = app
