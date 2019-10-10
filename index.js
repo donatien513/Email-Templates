@@ -40,7 +40,13 @@ const loadRenderer = (templateFilename) => {
   $("style").remove()
   $("*").removeAttr("class");
   let unescaped = unescape($.html());
-  let ejsFunc = ejs.compile(unescaped)
+  let minified = minify(unescaped, {
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    minifyCSS: true,
+    removeComments: true,
+  });
+  let ejsFunc = ejs.compile(minified)
   return ejsFunc
 }
 
