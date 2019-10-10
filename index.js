@@ -44,7 +44,7 @@ const routes = [
   {
     path: "/verify-email-ownership",
     validationRule: { body: {} },
-    renderer: loadRenderer("./templates/verify-email-ownership")
+    renderer: loadRenderer("./templates/verify-email-ownership.html")
   }
 ]
 
