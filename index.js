@@ -24,8 +24,6 @@ const app = express()
 const tachyons = require("tachyons/css/tachyons.css");
 const layout = require("./templates/layout.html");
 
-console.log(tachyons)
-
 const loadRenderer = (templatePath) => {
   let template = require(templatePath)
   let withinLayout = mustache.render(layout, {
@@ -51,6 +49,14 @@ const routes = [
 ]
 
 routes.forEach(route => {
+  app.get(route.path,
+    celebrate(route.validationRule),
+    (req, res, next) => {
+      let rendered = route.renderer(req.body);
+      res.send(rendered)
+      next()
+    }
+  )
   app.post(route.path,
     celebrate(route.validationRule),
     (req, res, next) => {
