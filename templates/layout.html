@@ -14,18 +14,18 @@
                 <table class="w-100 collapse bg-white br2 ba b--moon-gray">
                   <tr>
                     <td class="pa3 pb1 tc">
-                      <img src="{{organization.image_url}}" />
+                      <img class="w3 h3 br-100" src="{{organization.image_url}}" />
                     </td>
                   </tr>
                   <tr>
-                    <td class="pa3">
+                    <td class="pa1">
                       <div class="bb b--light-gray"></div>
                     </td>
                   </tr>
                   <tr>
                     <td class="pa3">
                       <div>
-                      {{content}}
+                      {{{content}}}
                       </div>
                     </td>
                   </tr>
@@ -37,7 +37,11 @@
                 <table class="w-100 collapse center">
                   <tr>
                     <td class="pa3 tc gray">
-                      Email envoyé par <a class="link blue" href="{{organization.site}}">{{organization.name}}</a>.
+                      Email envoyé par <a class="link blue" href="{{organization.website_url}}">{{organization.name}}</a>.<br />
+                      <small class="tc gray">
+                        <a class="link gray no-underline" href="mailto:{{organization.email_address}}">{{organization.email_address}}</a> |
+                        <a class="link gray no-underline" href="tel:{{organization.phone_number}}">{{organization.phone_number}}</a>
+                      </small>
                     </td>
                   </tr>
                 </table>
