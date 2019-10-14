@@ -15,6 +15,7 @@ const cheerio = require("cheerio")
 const express = require("express")
 const mustache = require("mustache")
 const { readFileSync } = require("fs")
+const bodyParser = require('body-parser')
 const { minify } = require("html-minifier")
 const { unescape } = require("html-escaper")
 const { celebrate, Joi, errors } = require("celebrate")
@@ -64,6 +65,9 @@ const routes = [
   }
 ]
 
+app.use(bodyParser.json())
+app.use(errors())
+
 routes.forEach(route => {
   app.post(route.path,
     celebrate(route.validationRule),
@@ -74,7 +78,5 @@ routes.forEach(route => {
     }
   )
 })
-
-app.use(errors())
 
 module.exports = app
