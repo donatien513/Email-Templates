@@ -55,7 +55,11 @@ const loadRenderer = (templateFilename) => {
 const routes = [
   {
     path: "/verify-email-ownership",
-    validationRule: { body: {} },
+    validationRule: {
+      body: Joi.object().keys({
+        validationLink: Joi.string().required()
+      })
+    },
     renderer: loadRenderer("verify-email-ownership.html")
   }
 ]
